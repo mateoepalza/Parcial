@@ -20,8 +20,8 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                <span>Consultar Productos</span>
+                <div class="card-header d-flex flex-row justify-content-between">
+                <span>Consultar</span>
                     <?php $canti = array(5, 10, 15, 25, 50, 100)?>
                     <select onchange="location.href='index.php?pid=<?php echo base64_encode('Vista/Facultad/buscarFacultad.php')?>&cantidad='+this.value">
                         <?php 
