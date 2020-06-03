@@ -1,0 +1,11 @@
+create database parcial;
+
+use parcial;
+
+create table facultad(
+    idFacultad int not null auto_increment,
+    nombre varchar(50) not null,
+    dirección varchar(80) not null,
+    telefono int,
+    primary key(idFacultad)
+);
