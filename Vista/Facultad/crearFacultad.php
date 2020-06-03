@@ -5,14 +5,22 @@
     $nombre = "";
     $direccion = "";
     $telefono = "";
-    echo "dsfds";
-    if(isset($_POST['enviar'])){
-        echo "entraa";
+    
+    if(isset($_POST['nombre'])){
         $nombre = $_POST['nombre'];
+    }
+
+    if(isset($_POST['direccion'])){
         $direccion = $_POST['direccion'];
+    }
+
+    if(isset($_POST['telefono'])){
         $telefono = $_POST['telefono'];
+    }
+    $alert = -1;
+    if(isset($_POST['enviar'])){
         $facultad = new Facultad("", $nombre, $direccion, $telefono);
-        $facultad -> guardar();
+        $alert = $facultad -> guardar();
     }
 
 
@@ -27,7 +35,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="index.php?pid=<?php echo "Vista/Facultad/crearFacultad.php"?>" method ="POST">
+                    <form action="index.php?pid=<?php echo base64_encode("Vista/Facultad/crearFacultad.php")?>" method ="POST">
                         <div class="form-group">
                             <label>Ingrese el nombre de la facultad</label>
                             <input class="form-control" name="nombre" type="text" value="<?php echo $nombre ?>">
@@ -44,6 +52,30 @@
                             <input class="form-control" name="enviar" type="submit">
                         </div>
                     </form>
+                    <?php
+
+                        if($alert > 0){
+                            ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                El registro fue almacenado correctamente.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <?php
+                            
+                        }else if($alert == 0){
+                            ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Hubo un problema con la base de datos, intente más tarde.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                        }
+
+                    ?>
                 </div>
             </div>
 

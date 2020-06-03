@@ -36,6 +36,12 @@ Class FacultadDAO{
         return "SELECT count(*)
                 FROM facultad";
     }
+
+    public function consultarPaginacion($cant, $pag){
+        return "SELECT idFacultad, nombre, direccion, telefono
+                FROM facultad
+                LIMIT " . ($pag - 1) * ($cant). " , ".$cant;
+    }
 }
 
 ?>

@@ -45,7 +45,9 @@ Class Facultad{
     public function guardar(){
         $this -> conexion -> abrir();
         $this -> conexion -> ejecutar($this -> FacultadDAO -> guardar());
+        $res = $this -> conexion -> affectedRows();
         $this -> conexion -> cerrar();
+        return $res;
     }
 
     public function consultarTodo(){
@@ -60,6 +62,18 @@ Class Facultad{
         return $result;
         
     }
+
+    public function consultarPaginacion($cant, $pag){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> FacultadDAO -> consultarPaginacion($cant, $pag));
+        $listaObj = array();
+        while($res = $this -> conexion -> extraer()){
+            array_push($listaObj, new Facultad($res[0], $res[1], $res[2], $res[3]));
+        }
+        $this -> conexion -> cerrar();
+        return $listaObj;
+    }
+
     public function cantidadFacultades(){
         $this -> conexion -> abrir();
         $this -> conexion -> ejecutar($this -> FacultadDAO -> cantidadFacultades());

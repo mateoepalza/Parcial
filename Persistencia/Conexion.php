@@ -22,6 +22,10 @@ class Conexion{
     
     function numFilas(){
         return ($this -> resultado!=null)?$this -> resultado -> num_rows:0;
-    }    
+    }
+    public function affectedRows(){
+        return $this-> mysqli -> affected_rows;
+    }
+
 }
 ?>

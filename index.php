@@ -7,8 +7,7 @@
 
     if(isset($_GET['pid'])){
         $var = base64_decode($_GET['pid']);
-        echo $var;
-        include $_GET['pid'];
+        include $var;
     }else{
         include "Vista/Facultad/crearFacultad.php";
     }

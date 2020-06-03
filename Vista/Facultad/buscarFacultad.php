@@ -12,8 +12,8 @@
 
 
     $facultad = new Facultad();
-    $result = $facultad -> consultarTodo();
-    
+    //$result = $facultad -> consultarTodo();
+    $result = $facultad -> consultarPaginacion($cantidad, $pag);
 ?>
 
 <div class="container">
@@ -23,7 +23,7 @@
                 <div class="card-header">
                 <span>Consultar Productos</span>
                     <?php $canti = array(5, 10, 15, 25, 50, 100)?>
-                    <select onchange="location.href='index.php?pid=<?php echo 'Vista/Facultad/buscarFacultad.php'?>&cantidad='+this.value">
+                    <select onchange="location.href='index.php?pid=<?php echo base64_encode('Vista/Facultad/buscarFacultad.php')?>&cantidad='+this.value">
                         <?php 
                             foreach ($canti as $val) {
                                 if($val == $cantidad){
@@ -76,13 +76,13 @@
                                 if($pag == 1){
                                     ?>
                                         <li class="page-item disabled">
-                                            <a class="page-link " href="index.php?pid=<?php echo "Presentacion/Producto/consultarProductos.php"?>&pag=<?php echo ($pag-1)?>&cantidad=<?php echo $cantidad?>" tabindex="-1" aria-disabled="true">Previous</a>
+                                            <a class="page-link " href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($pag-1)?>&cantidad=<?php echo $cantidad?>" tabindex="-1" aria-disabled="true">Previous</a>
                                         </li>
                                     <?php
                                 }else{
                                     ?>
                                         <li class="page-item ">
-                                            <a class="page-link" href="index.php?pid=<?php echo "Vista/Facultda/buscarFacultad.php"?>&pag=<?php echo ($pag-1)?>&cantidad=<?php echo $cantidad?>" tabindex="-1" >Previous</a>
+                                            <a class="page-link" href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($pag-1)?>&cantidad=<?php echo $cantidad?>" tabindex="-1" >Previous</a>
                                         </li>
                                     <?php
                                 }
@@ -116,13 +116,13 @@
                                     if($pag == $i){
                                         ?>
                                             <li class="page-item active">
-                                                <a class="page-link" href="index.php?pid=<?php echo base64_encode("Presentacion/Producto/consultarProductos.php")?>&pag=<?php echo ($i)?>&cantidad=<?php echo $cantidad?>"><?php echo ($i)?></a>
+                                                <a class="page-link" href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($i)?>&cantidad=<?php echo $cantidad?>"><?php echo ($i)?></a>
                                             </li>
                                         <?php
                                     }else{
                                         ?>
                                             <li class="page-item">
-                                                <a class="page-link" href="index.php?pid=<?php echo base64_encode("Presentacion/Producto/consultarProductos.php")?>&pag=<?php echo ($i)?>&cantidad=<?php echo $cantidad?>"><?php echo ($i)?></a>
+                                                <a class="page-link" href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($i)?>&cantidad=<?php echo $cantidad?>"><?php echo ($i)?></a>
                                             </li>
                                         <?php
                                     }
@@ -133,13 +133,13 @@
                                 if($pag >= $items){
                                     ?>
                                         <li class="page-item disabled">
-                                            <a class="page-link" href="index.php?pid=<?php echo b"Presentacion/Producto/consultarProductos.php"?>&pag=<?php echo ($pag+1)?>&cantidad=<?php echo $cantidad?>">Next</a>
+                                            <a class="page-link" href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($pag+1)?>&cantidad=<?php echo $cantidad?>">Next</a>
                                         </li>
                                     <?php
                                 }else{
                                     ?>
                                         <li class="page-item">
-                                            <a class="page-link" href="index.php?pid=<?php echo "Presentacion/Producto/consultarProductos.php"?>&pag=<?php echo ($pag+1)?>&cantidad=<?php echo $cantidad?>">Next</a>
+                                            <a class="page-link" href="index.php?pid=<?php echo base64_encode("Vista/Facultad/buscarFacultad.php")?>&pag=<?php echo ($pag+1)?>&cantidad=<?php echo $cantidad?>">Next</a>
                                         </li>
                                     <?php
                                 }
