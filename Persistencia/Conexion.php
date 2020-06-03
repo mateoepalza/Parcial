@@ -4,7 +4,7 @@ class Conexion{
     private $resultado;
     
     function abrir(){
-        $this -> mysqli = new mysqli("localhost", "root", "background=FFF", "virtualud");        
+        $this -> mysqli = new mysqli("localhost", "root", "background=FFF", "parcial");        
         $this -> mysqli -> set_charset("utf8");
     }
 
